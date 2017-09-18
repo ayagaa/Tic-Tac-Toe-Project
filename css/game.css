@@ -1,0 +1,41 @@
+.active svg g {
+    fill: gold;
+}
+
+.active-symbol-o {
+    background-image: url(../img/o.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+}
+
+.active-symbol-x {
+    background-image: url(../img/x.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+}
+
+.selected-symbol-o {
+    background-color: green;
+    background-image: url(../img/o.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+}
+
+.selected-symbol-x {
+    background-color: yellow;
+    background-image: url(../img/x.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+}
+
+.selected-symbol-o:hover {
+    background-color: green;
+}
+
+.selected-symbol-x:hover {
+    background-color: yellow;
+}
