@@ -208,15 +208,13 @@ const Game = (
             //Get the box
             let box = board.find('.box')[bestSpot.index];
             if (currentPlayer.isAI) {
-                setTimeout(() => {
-                    //Mark the box with the symbol of the AI player
-                    currentPlayer.play(box, currentPlayer);
-                    //Check if the game has ended and switch the board to the
-                    //player whose turn it is
-                    checkGameEnd();
-                    toggleActivePlayer((currentPlayer === Player1 ? Player2 : Player1));
-                    toggleBoard();
-                }, 2000);
+                //Mark the box with the symbol of the AI player
+                currentPlayer.play(box, currentPlayer);
+                //Check if the game has ended and switch the board to the
+                //player whose turn it is
+                checkGameEnd();
+                toggleActivePlayer((currentPlayer === Player1 ? Player2 : Player1));
+                toggleBoard();
             }
         }
 
@@ -299,7 +297,7 @@ const Game = (
             toggleActivePlayer(currentPlayer);
             //If the current player is computer make the AI move
             if (currentPlayer.isAI) {
-                makeAIMove();
+                setTimeout(makeAIMove, 1500);
             }
         }
 
@@ -371,17 +369,17 @@ const Game = (
                     //Action when user clicks on a box on the game board in order to mark it
                     if (!currentPlayer.isAI) {
                         //If the current player is not computer or (AI) check if the move made was successful
-                        if (makeMove(event.target.classList.contains('box'), currentPlayer)) {
+                        if (makeMove(event.target, currentPlayer)) {
                             //Check if move ended the game as win or tie
                             checkGameEnd();
                             //If the game did not end then change the current player and give the chance to the next player
                             toggleActivePlayer((currentPlayer === Player1 ? Player2 : Player1));
                             toggleBoard();
+                            //If the new current player is computer make the AI move
+                            if (currentPlayer.isAI) {
+                                setTimeout(makeAIMove, 1500);
+                            }
                         }
-                    }
-                    //If the new current player is computer make the AI move
-                    if (currentPlayer.isAI) {
-                        makeAIMove();
                     }
                 } else if (event.target['id'] === 'btnEnter') {
                     //Action when user clicks the button on the welcome-page. It moves to the player-page
